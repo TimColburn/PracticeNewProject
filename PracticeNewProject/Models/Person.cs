@@ -13,7 +13,7 @@ namespace PracticeNewProject.Models
         {
             ParkingLot = new List<string>()
             {
-                "A", "B", "C"
+                "A", "B", "C","D"
             };
         }
         public int Id { get; set; }
