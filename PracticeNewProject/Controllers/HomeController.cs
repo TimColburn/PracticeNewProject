@@ -34,6 +34,11 @@ namespace PracticeNewProject.Controllers
             return View();
         }
 
+        public ActionResult StudentRegistrationForm()
+        {
+            return View();
+        }
+
 
 
 

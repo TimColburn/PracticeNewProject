@@ -221,6 +221,7 @@
     <Content Include="Views\People\Create - Copy.cshtml" />
     <Content Include="Views\People\Edit - Copy.cshtml" />
     <Content Include="Views\People\Delete - Copy.cshtml" />
+    <Content Include="Views\Home\StudentRegistrationForm.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
