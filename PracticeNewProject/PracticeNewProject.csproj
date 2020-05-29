@@ -167,12 +167,21 @@
     <Compile Include="Migrations\202005282012145_AddedParkingLots.designer.cs">
       <DependentUpon>202005282012145_AddedParkingLots.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202005291938028_AddedStudents.cs" />
+    <Compile Include="Migrations\202005291938028_AddedStudents.designer.cs">
+      <DependentUpon>202005291938028_AddedStudents.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202005292014221_ModelIsUsingSelectListItems.cs" />
+    <Compile Include="Migrations\202005292014221_ModelIsUsingSelectListItems.designer.cs">
+      <DependentUpon>202005292014221_ModelIsUsingSelectListItems.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Department.cs" />
     <Compile Include="Models\GenderEnum.cs" />
     <Compile Include="Models\NewProjectContext.cs" />
     <Compile Include="Models\Person.cs" />
     <Compile Include="Models\Position.cs" />
+    <Compile Include="Models\Student.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -222,6 +231,7 @@
     <Content Include="Views\People\Edit - Copy.cshtml" />
     <Content Include="Views\People\Delete - Copy.cshtml" />
     <Content Include="Views\Home\StudentRegistrationForm.cshtml" />
+    <Content Include="Views\Home\StudentRegistrationForm - ORIG.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -248,6 +258,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202005282012145_AddedParkingLots.resx">
       <DependentUpon>202005282012145_AddedParkingLots.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202005291938028_AddedStudents.resx">
+      <DependentUpon>202005291938028_AddedStudents.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202005292014221_ModelIsUsingSelectListItems.resx">
+      <DependentUpon>202005292014221_ModelIsUsingSelectListItems.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

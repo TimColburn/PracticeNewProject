@@ -10,6 +10,9 @@ namespace PracticeNewProject.Controllers
     public class HomeController : Controller
     {
         // from:  https://dotnettutorials.net/lesson/dropdownlist-html-helper-mvc/
+
+        private NewProjectContext db = new NewProjectContext();
+
         public ActionResult Index()
         {
             List<Department> departments = new List<Department>()
@@ -36,7 +39,29 @@ namespace PracticeNewProject.Controllers
 
         public ActionResult StudentRegistrationForm()
         {
-            return View();
+            var student = new Student();
+            return View(student);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult StudentRegistrationForm(Student student)
+        {
+
+            //tmc  need to fix the multiple selections
+            //          use MultiSelectList?
+            //          see: https://entityframework.net/knowledge-base/19663782/how-can-i-get-my-multiselectlist-to-bind-to-my-data-model-
+            //tmc - also, consider using ViewBag instead of putting
+            //          the lists in the model
+            //          or, make the lists available on the 
+            //          class (make them static)
+            if (ModelState.IsValid)
+            {
+                db.Students.Add(student);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return View(student);
         }
 
 

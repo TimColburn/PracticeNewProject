@@ -1,91 +1,65 @@
-﻿@*From: https://www.c-sharpcorner.com/article/standard-html-helpers-in-asp-net-mvc-5/*@
+﻿@model PracticeNewProject.Models.Student
 
-<div class="container">
-    <h3>Student Registration Form: </h3>
-    @Html.ActionLink("Go to About", "About", new { })
-    @Html.Hidden("StudentId", "100")
-    @using (Html.BeginForm("Index", "Home", FormMethod.Post))
-    {
-        <div>
-            <table border="1" class="table table-bordered" style="background-color:antiquewhite;width:500px;">
-                <tbody>
-                    <tr>
-                        <td>
-                            @Html.Label("User Name ")
-                        </td>
-                        <td>
-                            @Html.TextBox("txtUserName", "", new { @class = "form-control" })
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            @Html.Label("Password", "Password")
-                        </td>
-                        <td>
-                            @Html.Password("Password", "", new { @class = "form-control" })
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            Gender:
-                        </td>
-                        <td>
-                            @Html.RadioButton("Gender", "Male", true, new { id = "male" }) Male
-                            @Html.RadioButton("Gender", "Female", false, new { id = "female" }) Female
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            Address:
-                        </td>
-                        <td>
-                            @Html.TextArea("Address", " ", new { @class = "form-control", id = "IdAddress" })
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            Hobbies :
-                        </td>
-                        <td>
-                            @Html.CheckBox("Cricket", true) Cricket
-                            @Html.CheckBox("Dancing") Dancing
-                            @Html.CheckBox("Drawing") Drawing
+<h2>Student Registration Form USING MODEL</h2>
+@Html.HiddenFor(m => m.StudentId)
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
 
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td>
-                            Cources:
-                            @{
-                                IEnumerable<string> strList = new List<string> { "BCA", "BCS", "MCA", "MCS" };
-                            }
-                        </td>
-                        <td>
-                            @Html.DropDownList("ddlCourse", new SelectList(strList, strList.FirstOrDefault()), "--Select Course----")
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Skills</td>
-                        <td>
-                            @Html.ListBox("Select Skills", new List<SelectListItem> {
-                           new SelectListItem{Text= "C#",Value="1"},
-                           new SelectListItem{ Text="ASP.NET",Value="2" },
-                           new SelectListItem{ Text="ASP.NET Core",Value="3" },
-                           new SelectListItem{ Text="Azure",Value="4" }
-                            })
-                        </td>
-
-                    </tr>
-                    <tr>
-                        <td>
-                        </td>
-                        <td>
-                            <input type="submit" class="btn-primary" />
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+    <div class="form-horizontal">
+        <div class="form-group">
+            @Html.LabelFor(m => m.UserName, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(m => m.UserName, "", new { @class = "form-control" })
+            </div>
         </div>
-    }
-</div> 
+        <div class="form-group">
+            @Html.LabelFor(m => m.Password, "Password", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.GenderMale, new { @class = "control-label col-md-2" })
+            <div class="col-md-10" style="padding-top: 6px;">
+                @Html.RadioButtonFor(m => m.GenderMale, true, new { id = "male" }) Male &nbsp;&nbsp;
+                @Html.RadioButtonFor(m => m.GenderMale, false, new { id = "female" }) Female
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.Address, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextAreaFor(m => m.Address, new { @class = "form-control", id = "IdAddress" })
+            </div>
+        </div>
+        @*<div class="form-group">
+                @Html.LabelFor(m => m.Hobbies, new { @class = "control-label col-md-2" })
+                <div class="col-md-10" style="padding-top: 6px;">
+                    @Html.CheckBoxFor(m => m.Hobb, true) Cricket &nbsp;&nbsp;
+                    @Html.CheckBox("Dancing") Dancing &nbsp;&nbsp;
+                    @Html.CheckBox("Drawing") Drawing
+                </div>
+            </div>*@
+        <div class="form-group">
+            @Html.LabelFor(m => m.Course, new { @class = "control-label col-md-2" })
+            <div class="col-md-10" style="padding-top: 6px;">
+                @Html.DropDownListFor(m => m.Course, new SelectList(Model.AvailableCourses, Model.AvailableCourses.FirstOrDefault()), "Select...", new { style = "width: 100%;" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.Skills, new { @class = "control-label col-md-2" })
+            <div class="col-md-10" style="padding-top: 6px;">
+                @Html.ListBox("Skills", new MultiSelectList(Model.AvailableSkills, "Value", "Text"), new { style = "width: 100%;" })
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Submit" class="btn btn-default btn-primary" />
+            </div>
+        </div>
+    </div>
+    @Html.ActionLink("Go to About", "About")
+
+}
+
+
