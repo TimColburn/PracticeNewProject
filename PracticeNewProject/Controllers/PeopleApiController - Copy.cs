@@ -1,4 +1,5 @@
-﻿using PracticeNewProject.Models;
+﻿using PracticeNewProject.Data;
+using PracticeNewProject.Models;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using System.Linq;

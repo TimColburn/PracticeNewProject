@@ -183,9 +183,15 @@
     <Compile Include="Migrations\202005301600525_CreatedNewModelsSkillsAndHobbies.designer.cs">
       <DependentUpon>202005301600525_CreatedNewModelsSkillsAndHobbies.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202005301610434_AddedModelCourse.cs" />
+    <Compile Include="Migrations\202005301610434_AddedModelCourse.designer.cs">
+      <DependentUpon>202005301610434_AddedModelCourse.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\Course.cs" />
     <Compile Include="Models\Hobby.cs" />
-    <Compile Include="Models\NewProjectContext.cs" />
+    <Compile Include="Data\NewProjectContext.cs" />
+    <Compile Include="Data\NewProjectDBInitializer.cs" />
     <Compile Include="Models\Person.cs" />
     <Compile Include="Models\Skill.cs" />
     <Compile Include="Models\Student.cs" />
@@ -274,6 +280,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202005301600525_CreatedNewModelsSkillsAndHobbies.resx">
       <DependentUpon>202005301600525_CreatedNewModelsSkillsAndHobbies.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202005301610434_AddedModelCourse.resx">
+      <DependentUpon>202005301610434_AddedModelCourse.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
