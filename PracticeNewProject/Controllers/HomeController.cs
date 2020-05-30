@@ -40,6 +40,9 @@ namespace PracticeNewProject.Controllers
 
         public ActionResult StudentRegistrationForm()
         {
+            ViewBag.AvailableHobbies = db.Hobbies.ToList();
+            ViewBag.AvailableCourses = db.Courses.Select(m => new SelectListItem { Text = m.Name, Value = m.Id.ToString() }).ToList();
+            ViewBag.AvailableSkills = db.Skills.Select(m => new SelectListItem { Text = m.Name, Value = m.Id.ToString() }).ToList();
             var student = new Student();
             return View(student);
         }

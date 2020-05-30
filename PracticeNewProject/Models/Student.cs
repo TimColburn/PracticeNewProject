@@ -14,10 +14,9 @@ namespace PracticeNewProject.Models
         public string Password { get; set; }
         public bool GenderMale { get; set; }
         public string Address { get; set; }
-        public List<string> Hobbies { get; set; }
-        public string Course { get; set; }
-        public List<string> Skills { get; set; }
-
+        public List<Hobby> Hobbies { get; set; }
+        public Course Course { get; set; }
+        public List<Skill> Skills { get; set; }
     }
 
 }
