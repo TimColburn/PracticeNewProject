@@ -15,24 +15,24 @@ namespace PracticeNewProject.Controllers
 
         public ActionResult Index()
         {
-            List<Department> departments = new List<Department>()
-            {
-                new Department() {Id = 1, Name="IT" },
-                new Department() {Id = 2, Name="HR" },
-                new Department() {Id = 3, Name="Payroll" },
-            };
-            ViewBag.Departments = departments;
+            //List<Department> departments = new List<Department>()
+            //{
+            //    new Department() {Id = 1, Name="IT" },
+            //    new Department() {Id = 2, Name="HR" },
+            //    new Department() {Id = 3, Name="Payroll" },
+            //};
+            //ViewBag.Departments = departments;
 
-            List<SelectListItem> genders = new List<SelectListItem>();
-            foreach (var item in Enum.GetValues(typeof(GenderEnum)))
-            {
-                genders.Add(new SelectListItem()
-                {
-                    Value = ((int)item).ToString(),
-                    Text = item.ToString()
-                });
-            }
-            ViewBag.Genders = genders;
+            //List<SelectListItem> genders = new List<SelectListItem>();
+            //foreach (var item in Enum.GetValues(typeof(GenderEnum)))
+            //{
+            //    genders.Add(new SelectListItem()
+            //    {
+            //        Value = ((int)item).ToString(),
+            //        Text = item.ToString()
+            //    });
+            //}
+            //ViewBag.Genders = genders;
 
             return View();
         }

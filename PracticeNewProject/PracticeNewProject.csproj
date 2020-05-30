@@ -180,11 +180,8 @@
       <DependentUpon>202005301534450_CleanedPeopleModel.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="Models\Department.cs" />
-    <Compile Include="Models\GenderEnum.cs" />
     <Compile Include="Models\NewProjectContext.cs" />
     <Compile Include="Models\Person.cs" />
-    <Compile Include="Models\Position.cs" />
     <Compile Include="Models\Student.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -221,8 +218,6 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\People\Create.cshtml" />
     <Content Include="Views\People\Delete.cshtml" />
@@ -235,7 +230,6 @@
     <Content Include="Views\People\Edit - Copy.cshtml" />
     <Content Include="Views\People\Delete - Copy.cshtml" />
     <Content Include="Views\Home\StudentRegistrationForm.cshtml" />
-    <Content Include="Views\Home\StudentRegistrationForm - ORIG.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
