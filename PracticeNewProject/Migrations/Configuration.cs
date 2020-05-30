@@ -1,5 +1,6 @@
 ﻿namespace PracticeNewProject.Migrations
 {
+    using PracticeNewProject.Models;
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
@@ -18,6 +19,17 @@
 
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method
             //  to avoid creating duplicate seed data.
+
+
+            context.Hobbies.AddOrUpdate(new Hobby() { Name = "Cricket" });
+            context.Hobbies.AddOrUpdate(new Hobby() { Name = "Dancing" });
+            context.Hobbies.AddOrUpdate(new Hobby() { Name = "Drawing" });
+
+
+            context.Skills.AddOrUpdate(new Skill() { Name = "C#" });
+            context.Skills.AddOrUpdate(new Skill() { Name = "ASP.NET" });
+            context.Skills.AddOrUpdate(new Skill() { Name = "ASP.NET Core" });
+            context.Skills.AddOrUpdate(new Skill() { Name = "Azure" });
         }
     }
 }

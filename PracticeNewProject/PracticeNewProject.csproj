@@ -179,9 +179,15 @@
     <Compile Include="Migrations\202005301534450_CleanedPeopleModel.designer.cs">
       <DependentUpon>202005301534450_CleanedPeopleModel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202005301600525_CreatedNewModelsSkillsAndHobbies.cs" />
+    <Compile Include="Migrations\202005301600525_CreatedNewModelsSkillsAndHobbies.designer.cs">
+      <DependentUpon>202005301600525_CreatedNewModelsSkillsAndHobbies.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\Hobby.cs" />
     <Compile Include="Models\NewProjectContext.cs" />
     <Compile Include="Models\Person.cs" />
+    <Compile Include="Models\Skill.cs" />
     <Compile Include="Models\Student.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -265,6 +271,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202005301534450_CleanedPeopleModel.resx">
       <DependentUpon>202005301534450_CleanedPeopleModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202005301600525_CreatedNewModelsSkillsAndHobbies.resx">
+      <DependentUpon>202005301600525_CreatedNewModelsSkillsAndHobbies.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

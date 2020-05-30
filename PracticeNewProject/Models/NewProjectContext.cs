@@ -15,5 +15,9 @@ namespace PracticeNewProject.Models
         public DbSet<Person> People { get; set; }
 
         public DbSet<Student> Students { get; set; }
+
+        public DbSet<Hobby> Hobbies { get; set; }
+
+        public DbSet<Skill> Skills { get; set; }
     }
 }
