@@ -10,11 +10,9 @@ namespace PracticeNewProject.Models
     {
         public NewProjectContext()
         {
-
         }
 
         public DbSet<Person> People { get; set; }
-        public DbSet<Position> Positions { get; set; }
 
         public DbSet<Student> Students { get; set; }
     }

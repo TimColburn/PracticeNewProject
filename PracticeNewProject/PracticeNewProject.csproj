@@ -175,6 +175,10 @@
     <Compile Include="Migrations\202005292014221_ModelIsUsingSelectListItems.designer.cs">
       <DependentUpon>202005292014221_ModelIsUsingSelectListItems.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202005301534450_CleanedPeopleModel.cs" />
+    <Compile Include="Migrations\202005301534450_CleanedPeopleModel.designer.cs">
+      <DependentUpon>202005301534450_CleanedPeopleModel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Department.cs" />
     <Compile Include="Models\GenderEnum.cs" />
@@ -264,6 +268,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202005292014221_ModelIsUsingSelectListItems.resx">
       <DependentUpon>202005292014221_ModelIsUsingSelectListItems.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202005301534450_CleanedPeopleModel.resx">
+      <DependentUpon>202005301534450_CleanedPeopleModel.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

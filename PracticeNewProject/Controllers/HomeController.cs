@@ -55,6 +55,9 @@ namespace PracticeNewProject.Controllers
             //          the lists in the model
             //          or, make the lists available on the 
             //          class (make them static)
+            //tmc - maybe just have VS scaffold CRUD w view!?
+            //          => tried this but it punted on the hard stuff!
+            //tmc - look at this too:  https://www.completecsharptutorial.com/asp-net-mvc5/html-listboxfor-and-html-listboxforfor-example-in-asp-net-mvc.php
             if (ModelState.IsValid)
             {
                 db.Students.Add(student);
@@ -64,21 +67,5 @@ namespace PracticeNewProject.Controllers
             return View(student);
         }
 
-
-
-
-        public ActionResult About()
-        {
-            ViewBag.Message = "Your application description page.";
-
-            return View();
-        }
-
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
-        }
     }
 }
