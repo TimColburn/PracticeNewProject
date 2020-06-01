@@ -191,6 +191,30 @@
     <Compile Include="Migrations\202005301832447_StudentModelNowPointsToEntityTypes.designer.cs">
       <DependentUpon>202005301832447_StudentModelNowPointsToEntityTypes.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202006011738241_ChangedToManyToManyRelationships.cs" />
+    <Compile Include="Migrations\202006011738241_ChangedToManyToManyRelationships.designer.cs">
+      <DependentUpon>202006011738241_ChangedToManyToManyRelationships.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202006011914462_FixingStudentPropertyObjects.cs" />
+    <Compile Include="Migrations\202006011914462_FixingStudentPropertyObjects.designer.cs">
+      <DependentUpon>202006011914462_FixingStudentPropertyObjects.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202006011951272_TryingToGetEntityRelationshipToWorkCorrectly.cs" />
+    <Compile Include="Migrations\202006011951272_TryingToGetEntityRelationshipToWorkCorrectly.designer.cs">
+      <DependentUpon>202006011951272_TryingToGetEntityRelationshipToWorkCorrectly.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202006012008472_RemovedSelectedCourseId.cs" />
+    <Compile Include="Migrations\202006012008472_RemovedSelectedCourseId.designer.cs">
+      <DependentUpon>202006012008472_RemovedSelectedCourseId.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202006012033278_StillTryingToFigureEntityRelationshipsOut.cs" />
+    <Compile Include="Migrations\202006012033278_StillTryingToFigureEntityRelationshipsOut.designer.cs">
+      <DependentUpon>202006012033278_StillTryingToFigureEntityRelationshipsOut.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202006012057220_EntityRelationshipsWork.cs" />
+    <Compile Include="Migrations\202006012057220_EntityRelationshipsWork.designer.cs">
+      <DependentUpon>202006012057220_EntityRelationshipsWork.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Course.cs" />
     <Compile Include="Models\Hobby.cs" />
@@ -290,6 +314,24 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202005301832447_StudentModelNowPointsToEntityTypes.resx">
       <DependentUpon>202005301832447_StudentModelNowPointsToEntityTypes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202006011738241_ChangedToManyToManyRelationships.resx">
+      <DependentUpon>202006011738241_ChangedToManyToManyRelationships.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202006011914462_FixingStudentPropertyObjects.resx">
+      <DependentUpon>202006011914462_FixingStudentPropertyObjects.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202006011951272_TryingToGetEntityRelationshipToWorkCorrectly.resx">
+      <DependentUpon>202006011951272_TryingToGetEntityRelationshipToWorkCorrectly.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202006012008472_RemovedSelectedCourseId.resx">
+      <DependentUpon>202006012008472_RemovedSelectedCourseId.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202006012033278_StillTryingToFigureEntityRelationshipsOut.resx">
+      <DependentUpon>202006012033278_StillTryingToFigureEntityRelationshipsOut.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202006012057220_EntityRelationshipsWork.resx">
+      <DependentUpon>202006012057220_EntityRelationshipsWork.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

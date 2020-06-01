@@ -39,20 +39,20 @@
             <div class="col-md-10" style="padding-top: 6px;">
                 @foreach (Hobby hobby in ViewBag.AvailableHobbies)
                 {
-                    @Html.CheckBox(hobby.Name)<span>&nbsp;</span>@hobby.Name<span>&nbsp; &nbsp;</span>
+                    <input name="SelectedHobbyIds" type="checkbox" value="@hobby.Id" /><span>&nbsp;</span>@hobby.Name<span>&nbsp; &nbsp;</span>
                 }
             </div>
         </div>
-        @*<div class="form-group">
+        <div class="form-group">
             @Html.LabelFor(m => m.Course, new { @class = "control-label col-md-2" })
             <div class="col-md-10" style="padding-top: 6px;">
-                @Html.DropDownListFor(m => m.Course, ViewBag.AvailableCourses, "Select...", new { style = "width: 100%;" })
+                @Html.DropDownListFor(m => m.CourseId, new SelectList(ViewBag.AvailableCourses, "Value", "Text"), "Select...", new { style = "width:100%;" })
             </div>
-        </div>*@
+        </div>
         <div class="form-group">
             @Html.LabelFor(m => m.Skills, new { @class = "control-label col-md-2" })
             <div class="col-md-10" style="padding-top: 6px;">
-                @Html.ListBox("Skills", new MultiSelectList(ViewBag.AvailableSkills, "Value", "Text"), new { style = "width: 100%;" })
+                @Html.ListBoxFor(m => m.SelectedSkillIds, new MultiSelectList(ViewBag.AvailableSkills, "Value", "Text"), new { style = "width: 100%;" })
             </div>
         </div>
         <div class="form-group">

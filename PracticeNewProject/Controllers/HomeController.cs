@@ -51,23 +51,21 @@ namespace PracticeNewProject.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult StudentRegistrationForm(Student student)
         {
-
-            //tmc  need to fix the multiple selections
-            //          use MultiSelectList?
-            //          see: https://entityframework.net/knowledge-base/19663782/how-can-i-get-my-multiselectlist-to-bind-to-my-data-model-
-            //tmc - also, consider using ViewBag instead of putting
-            //          the lists in the model
-            //          or, make the lists available on the 
-            //          class (make them static)
-            //tmc - maybe just have VS scaffold CRUD w view!?
-            //          => tried this but it punted on the hard stuff!
-            //tmc - look at this too:  https://www.completecsharptutorial.com/asp-net-mvc5/html-listboxfor-and-html-listboxforfor-example-in-asp-net-mvc.php
             if (ModelState.IsValid)
             {
+                //convert the selected ids into objects
+                student.Course = db.Courses.Find(student.CourseId);
+                student.Skills = student.SelectedSkillIds.Select(m => db.Skills.Find(m)).ToList();
+                student.Hobbies = student.SelectedHobbyIds.Select(m => db.Hobbies.Find(m)).ToList();
                 db.Students.Add(student);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+
+            ViewBag.AvailableHobbies = db.Hobbies.ToList();
+            ViewBag.AvailableCourse = db.Courses.Select(m => new SelectListItem { Text = m.Name, Value = m.Id.ToString() }).ToList();
+            ViewBag.AvailableSkills = db.Skills.Select(m => new SelectListItem { Text = m.Name, Value = m.Id.ToString() }).ToList();
+
             return View(student);
         }
 
