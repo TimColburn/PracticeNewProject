@@ -34,7 +34,7 @@ namespace PracticeNewProject.Controllers
             //    });
             //}
             //ViewBag.Genders = genders;
-
+             
             return View();
         }
 

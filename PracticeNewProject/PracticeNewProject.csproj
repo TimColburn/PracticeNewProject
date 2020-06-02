@@ -152,6 +152,8 @@
     <Compile Include="Controllers\PeopleApiController.cs" />
     <Compile Include="Controllers\PeopleController - Copy.cs" />
     <Compile Include="Controllers\PeopleController.cs" />
+    <Compile Include="Controllers\StudentsController.cs" />
+    <Compile Include="Controllers\StudentsOrigController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -215,6 +217,14 @@
     <Compile Include="Migrations\202006012057220_EntityRelationshipsWork.designer.cs">
       <DependentUpon>202006012057220_EntityRelationshipsWork.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202006021932151_MadeRelationshipsManyToMany.cs" />
+    <Compile Include="Migrations\202006021932151_MadeRelationshipsManyToMany.designer.cs">
+      <DependentUpon>202006021932151_MadeRelationshipsManyToMany.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202006021952264_CorrectedManyToManyRelationships.cs" />
+    <Compile Include="Migrations\202006021952264_CorrectedManyToManyRelationships.designer.cs">
+      <DependentUpon>202006021952264_CorrectedManyToManyRelationships.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Course.cs" />
     <Compile Include="Models\Hobby.cs" />
@@ -270,6 +280,16 @@
     <Content Include="Views\People\Edit - Copy.cshtml" />
     <Content Include="Views\People\Delete - Copy.cshtml" />
     <Content Include="Views\Home\StudentRegistrationForm.cshtml" />
+    <Content Include="Views\Students\Create.cshtml" />
+    <Content Include="Views\Students\Delete.cshtml" />
+    <Content Include="Views\Students\Details.cshtml" />
+    <Content Include="Views\Students\Edit.cshtml" />
+    <Content Include="Views\Students\Index.cshtml" />
+    <Content Include="Views\StudentsOrig\Create.cshtml" />
+    <Content Include="Views\StudentsOrig\Delete.cshtml" />
+    <Content Include="Views\StudentsOrig\Details.cshtml" />
+    <Content Include="Views\StudentsOrig\Edit.cshtml" />
+    <Content Include="Views\StudentsOrig\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -332,6 +352,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202006012057220_EntityRelationshipsWork.resx">
       <DependentUpon>202006012057220_EntityRelationshipsWork.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202006021932151_MadeRelationshipsManyToMany.resx">
+      <DependentUpon>202006021932151_MadeRelationshipsManyToMany.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202006021952264_CorrectedManyToManyRelationships.resx">
+      <DependentUpon>202006021952264_CorrectedManyToManyRelationships.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -30,9 +30,9 @@ namespace PracticeNewProject.Models
         public List<int> SelectedHobbyIds { get; set; }
 
 
-        public ICollection<Hobby> Hobbies { get; set; }
-        public Course Course { get; set; }
-        public ICollection<Skill> Skills { get; set; }
+        public virtual Course Course { get; set; }
+        public virtual ICollection<Hobby> Hobbies { get; set; }
+        public virtual ICollection<Skill> Skills { get; set; }
     }
 
 }
