@@ -1,6 +1,5 @@
 ﻿using PracticeNewProject.Data;
 using PracticeNewProject.Models;
-using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
 using System.Linq;
@@ -20,10 +19,6 @@ namespace PracticeNewProject.Controllers
                 .Include(s => s.Skills)
                 .Include(s => s.Hobbies);
 
-
-            var x = students.ToList();
-
-
             return View(students.ToList());
         }
 
@@ -31,14 +26,13 @@ namespace PracticeNewProject.Controllers
         public ActionResult Details(int? id)
         {
             if (id == null)
-            {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
+
             Student student = db.Students.Find(id);
+
             if (student == null)
-            {
                 return HttpNotFound();
-            }
+
             return View(student);
         }
 
@@ -48,6 +42,7 @@ namespace PracticeNewProject.Controllers
             ViewBag.AvailableHobbies = db.Hobbies.ToList();
             ViewBag.AvailableCourses = db.Courses.Select(m => new SelectListItem { Text = m.Name, Value = m.Id.ToString() }).ToList();
             ViewBag.AvailableSkills = db.Skills.Select(m => new SelectListItem { Text = m.Name, Value = m.Id.ToString() }).ToList();
+
             var student = new Student();
             return View(student);
         }
@@ -62,33 +57,24 @@ namespace PracticeNewProject.Controllers
                 {
                     //convert the selected ids into objects
                     student.Course = db.Courses.Find(student.CourseId);
-                    //student.Skills = student.SelectedSkillIds.Select(m => db.Skills.Find(m)).ToList();
-                    //student.Hobbies = student.SelectedHobbyIds.Select(m => db.Hobbies.Find(m)).ToList();
 
-
-                    student.Hobbies.Clear();
-                    foreach (var id in student.SelectedHobbyIds)
+                    if (student.SelectedHobbyIds != null)
                     {
-                        student.Hobbies.Add(db.Hobbies.Find(id));
-                    }
-                    student.Skills.Clear();
-                    foreach (var id in student.SelectedSkillIds)
-                    {
-                        student.Skills.Add(db.Skills.Find(id));
+                        foreach (var id in student.SelectedHobbyIds)
+                            student.Hobbies.Add(db.Hobbies.Find(id));
                     }
 
-
-
-
-
-
+                    if (student.SelectedSkillIds != null)
+                    {
+                        foreach (var id in student.SelectedSkillIds)
+                            student.Skills.Add(db.Skills.Find(id));
+                    }
                     db.Students.Add(student);
                     db.SaveChanges();
                     return RedirectToAction("Index");
                 }
-
-                ViewBag.AvailableHobbies = db.Hobbies.ToList();
                 ViewBag.AvailableCourse = db.Courses.Select(m => new SelectListItem { Text = m.Name, Value = m.Id.ToString() }).ToList();
+                ViewBag.AvailableHobbies = db.Hobbies.ToList();
                 ViewBag.AvailableSkills = db.Skills.Select(m => new SelectListItem { Text = m.Name, Value = m.Id.ToString() }).ToList();
 
                 return View(student);
@@ -99,19 +85,18 @@ namespace PracticeNewProject.Controllers
         public ActionResult Edit(int? id)
         {
             if (id == null)
-            {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
+
             Student student = db.Students.Find(id);
             if (student == null)
-            {
                 return HttpNotFound();
-            }
-            ViewBag.CourseId = new SelectList(db.Courses, "Id", "Name", student.CourseId);
 
+            student.SelectedHobbyIds = student.Hobbies.Select(m => m.Id).ToList();
+            student.SelectedSkillIds = student.Skills.Select(m => m.Id).ToList();
+
+            ViewBag.AvailableCourses = db.Courses.Select(m => new SelectListItem { Text = m.Name, Value = m.Id.ToString(), Selected = student.CourseId == m.Id }).ToList();
             ViewBag.AvailableHobbies = db.Hobbies.ToList();
-            ViewBag.AvailableCourses = db.Courses.Select(m => new SelectListItem { Text = m.Name, Value = m.Id.ToString() }).ToList();
-            ViewBag.AvailableSkills = db.Skills.Select(m => new SelectListItem { Text = m.Name, Value = m.Id.ToString() }).ToList();
+            ViewBag.AvailableSkills = db.Skills.Select(m => new SelectListItem { Text = m.Name, Value = m.Id.ToString(), Selected = student.SelectedSkillIds.Contains(m.Id) }).ToList();
 
             return View(student);
         }
@@ -123,52 +108,48 @@ namespace PracticeNewProject.Controllers
         {
             var student = db.Students.Find(studentParameter.StudentId);
             if (student == null)
-            {
                 return new HttpNotFoundResult();
-            }
+
             if (ModelState.IsValid)
             {
                 student.Address = studentParameter.Address;
                 student.GenderMale = studentParameter.GenderMale;
                 student.Password = studentParameter.Password;
                 student.UserName = studentParameter.UserName;
-                studentParameter.Course = db.Courses.Find(studentParameter.CourseId);
+                student.Course = db.Courses.Find(studentParameter.CourseId);
 
-
-
-                // First remove items that are no longer selected
-                if (studentParameter.SelectedSkillIds != null)
+                if (studentParameter.SelectedHobbyIds == null)
+                    student.Hobbies.Where(m => student.Hobbies.Contains(m)).ToList().ForEach(m => student.Hobbies.Remove(m));
+                else
                 {
-                    //tmc i think the below line sb more performant (glo)
+                    // First remove items that are no longer selected
                     student.Hobbies.Where(m => !studentParameter.SelectedHobbyIds.Contains(m.Id))
                         .ToList().ForEach(m => student.Hobbies.Remove(m));
+                    // Now add newly selected hobbies
+                    var existingHobbyIds = student.Hobbies.Select(m => m.Id).ToList();
+                    var newHobbyIds = studentParameter.SelectedHobbyIds.Except(existingHobbyIds).ToList();
+                    db.Hobbies.Where(m => newHobbyIds.Contains(m.Id))
+                        .ToList().ForEach(m => student.Hobbies.Add(m));
                 }
-                // Now add newly selected hobbies
-                var existingHobbyIds = student.Hobbies.Select(m => m.Id);
-                var newHobbyIds = studentParameter.SelectedHobbyIds.Except(existingHobbyIds);
-                db.Hobbies.Where(m => newHobbyIds.Contains(m.Id))
-                    .ToList().ForEach(m => student.Hobbies.Add(m));
 
-
-
-
-                // First remove items that are no longer selected
-                if (studentParameter.SelectedSkillIds != null)
+                if (studentParameter.SelectedSkillIds == null)
+                    student.Skills.Where(m => student.Skills.Contains(m)).ToList().ForEach(m => student.Skills.Remove(m));
+                else
                 {
-                    student.Skills.Where(m => !studentParameter.SelectedSkillIds.Contains(m.Id))
-                        .ToList().ForEach(m => student.Skills.Remove(m));
+                    // First remove items that are no longer selected
+                    if (studentParameter.SelectedSkillIds != null)
+                    {
+                        student.Skills.Where(m => !studentParameter.SelectedSkillIds.Contains(m.Id))
+                            .ToList().ForEach(m => student.Skills.Remove(m));
+                    }
+                    // Now add newly selected skills
+                    var existingSkillsIds = student.Skills.Select(m => m.Id);
+                    var newSkillsIds = studentParameter.SelectedSkillIds.Except(existingSkillsIds);
+                    db.Skills.Where(m => newSkillsIds.Contains(m.Id))
+                        .ToList().ForEach(m => student.Skills.Add(m));
                 }
-                // Now add newly selected skills
-                var existingSkillsIds = student.Skills.Select(m => m.Id);
-                var newSkillsIds = studentParameter.SelectedSkillIds.Except(existingSkillsIds);
-                db.Skills.Where(m => newSkillsIds.Contains(m.Id))
-                    .ToList().ForEach(m => student.Skills.Add(m));
-
-
-
                 db.Entry(student).State = EntityState.Modified;
                 db.SaveChanges();
-
                 return RedirectToAction("Index");
             }
 
@@ -180,14 +161,13 @@ namespace PracticeNewProject.Controllers
         public ActionResult Delete(int? id)
         {
             if (id == null)
-            {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
+
             Student student = db.Students.Find(id);
+
             if (student == null)
-            {
                 return HttpNotFound();
-            }
+
             return View(student);
         }
 
@@ -205,9 +185,8 @@ namespace PracticeNewProject.Controllers
         protected override void Dispose(bool disposing)
         {
             if (disposing)
-            {
                 db.Dispose();
-            }
+
             base.Dispose(disposing);
         }
     }

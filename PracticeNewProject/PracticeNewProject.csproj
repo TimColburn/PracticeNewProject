@@ -147,13 +147,11 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\SwaggerConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PeopleApiController - Copy.cs" />
     <Compile Include="Controllers\PeopleApiController.cs" />
     <Compile Include="Controllers\PeopleController - Copy.cs" />
     <Compile Include="Controllers\PeopleController.cs" />
     <Compile Include="Controllers\StudentsController.cs" />
-    <Compile Include="Controllers\StudentsOrigController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -224,6 +222,14 @@
     <Compile Include="Migrations\202006021952264_CorrectedManyToManyRelationships.cs" />
     <Compile Include="Migrations\202006021952264_CorrectedManyToManyRelationships.designer.cs">
       <DependentUpon>202006021952264_CorrectedManyToManyRelationships.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202006031757588_AddedStudentSeed.cs" />
+    <Compile Include="Migrations\202006031757588_AddedStudentSeed.designer.cs">
+      <DependentUpon>202006031757588_AddedStudentSeed.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202006031901573_CleanedUpEditView.cs" />
+    <Compile Include="Migrations\202006031901573_CleanedUpEditView.designer.cs">
+      <DependentUpon>202006031901573_CleanedUpEditView.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Course.cs" />
@@ -358,6 +364,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202006021952264_CorrectedManyToManyRelationships.resx">
       <DependentUpon>202006021952264_CorrectedManyToManyRelationships.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202006031757588_AddedStudentSeed.resx">
+      <DependentUpon>202006031757588_AddedStudentSeed.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202006031901573_CleanedUpEditView.resx">
+      <DependentUpon>202006031901573_CleanedUpEditView.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

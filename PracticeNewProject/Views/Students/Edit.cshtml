@@ -13,74 +13,74 @@
 {
     @Html.AntiForgeryToken()
 
-    <div class="form-horizontal">
-        <h4>Student</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @Html.HiddenFor(model => model.StudentId)
+<div class="form-horizontal">
+    <h4>Student</h4>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @Html.HiddenFor(model => model.StudentId)
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.UserName, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.UserName, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.GenderMale, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                <div class="checkbox">
-                    @Html.EditorFor(model => model.GenderMale)
-                    @Html.ValidationMessageFor(model => model.GenderMale, "", new { @class = "text-danger" })
-                </div>
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Address, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.CourseId, "CourseId", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("CourseId", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.CourseId, "", new { @class = "text-danger" })
-            </div>
-        </div>
-        <div class="form-group">
-            @Html.LabelFor(m => m.Hobbies, new { @class = "control-label col-md-2" })
-            <div class="col-md-10" style="padding-top: 6px;">
-                @foreach (Hobby hobby in ViewBag.AvailableHobbies)
-                {
-                    <input name="SelectedHobbyIds" type="checkbox" value="@hobby.Id" /><span>&nbsp;</span>@hobby.Name<span>&nbsp; &nbsp;</span>
-                }
-            </div>
-        </div>
-        <div class="form-group">
-            @Html.LabelFor(m => m.Skills, new { @class = "control-label col-md-2" })
-            <div class="col-md-10" style="padding-top: 6px;">
-                @Html.ListBoxFor(m => m.SelectedSkillIds, new MultiSelectList(ViewBag.AvailableSkills, "Value", "Text"), new { style = "width: 100%;" })
-            </div>
-        </div>
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
-            </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.UserName, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.UserName, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })
         </div>
     </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.GenderMale, new { @class = "control-label col-md-2" })
+        <div class="col-md-10" style="padding-top: 6px;">
+            @Html.RadioButtonFor(m => m.GenderMale, true,  new { id = "male" }) Male &nbsp;&nbsp;
+            @Html.RadioButtonFor(m => m.GenderMale, false,  new { id = "female" }) Female
+            @Html.ValidationMessageFor(model => model.GenderMale, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Address, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.CourseId, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownListFor(m => m.CourseId, new SelectList(ViewBag.AvailableCourses, "Value", "Text"), htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.CourseId, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Hobbies, new { @class = "control-label col-md-2" })
+        <div class="col-md-10" style="padding-top: 6px;">
+            @foreach (Hobby hobby in ViewBag.AvailableHobbies)
+            {
+                var isChecked = Model.SelectedHobbyIds.Contains(hobby.Id) ? "checked" : "";
+                <input name="SelectedHobbyIds" type="checkbox" value="@hobby.Id" @isChecked /><span>&nbsp;</span>@hobby.Name<span>&nbsp; &nbsp;</span>
+            }
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Skills, new { @class = "control-label col-md-2" })
+        <div class="col-md-10" style="padding-top: 6px;">
+            @Html.ListBoxFor(m => m.SelectedSkillIds, new MultiSelectList(ViewBag.AvailableSkills, "Value", "Text"), new { style = "width: 100%;" })
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Save" class="btn btn-default" />
+        </div>
+    </div>
+</div>
 }
 
 <div>
