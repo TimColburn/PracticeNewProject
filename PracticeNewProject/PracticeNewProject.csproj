@@ -231,6 +231,10 @@
     <Compile Include="Migrations\202006031901573_CleanedUpEditView.designer.cs">
       <DependentUpon>202006031901573_CleanedUpEditView.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202006041645338_CourseIdIsNullableInt.cs" />
+    <Compile Include="Migrations\202006041645338_CourseIdIsNullableInt.designer.cs">
+      <DependentUpon>202006041645338_CourseIdIsNullableInt.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Course.cs" />
     <Compile Include="Models\Hobby.cs" />
@@ -370,6 +374,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202006031901573_CleanedUpEditView.resx">
       <DependentUpon>202006031901573_CleanedUpEditView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202006041645338_CourseIdIsNullableInt.resx">
+      <DependentUpon>202006041645338_CourseIdIsNullableInt.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -50,6 +50,8 @@ namespace PracticeNewProject.Data
 
             context.Students.Add(student1);
             context.Students.Add(student2);
+
+            context.SaveChanges();
         }
     }
 }

@@ -29,7 +29,7 @@ namespace PracticeNewProject.Models
         public string Address { get; set; }
 
         [DisplayName("Course")]
-        public int CourseId { get; set; }
+        public int? CourseId { get; set; }
 
 
         [NotMapped]

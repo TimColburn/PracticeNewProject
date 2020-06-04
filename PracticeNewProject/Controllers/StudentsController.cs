@@ -40,8 +40,8 @@ namespace PracticeNewProject.Controllers
         public ActionResult Create()
         {
             ViewBag.AvailableHobbies = db.Hobbies.ToList();
-            ViewBag.AvailableCourses = db.Courses.Select(m => new SelectListItem { Text = m.Name, Value = m.Id.ToString() }).ToList();
-            ViewBag.AvailableSkills = db.Skills.Select(m => new SelectListItem { Text = m.Name, Value = m.Id.ToString() }).ToList();
+            ViewBag.AvailableCourses = db.Courses.ToList();
+            ViewBag.AvailableSkills = db.Skills.ToList();
 
             var student = new Student();
             return View(student);
@@ -56,7 +56,7 @@ namespace PracticeNewProject.Controllers
                 if (ModelState.IsValid)
                 {
                     //convert the selected ids into objects
-                    student.Course = db.Courses.Find(student.CourseId);
+                    student.Course = db.Courses.Find(student.CourseId.Value);
 
                     if (student.SelectedHobbyIds != null)
                     {
@@ -73,9 +73,9 @@ namespace PracticeNewProject.Controllers
                     db.SaveChanges();
                     return RedirectToAction("Index");
                 }
-                ViewBag.AvailableCourse = db.Courses.Select(m => new SelectListItem { Text = m.Name, Value = m.Id.ToString() }).ToList();
+                ViewBag.AvailableCourse = db.Courses.ToList();
                 ViewBag.AvailableHobbies = db.Hobbies.ToList();
-                ViewBag.AvailableSkills = db.Skills.Select(m => new SelectListItem { Text = m.Name, Value = m.Id.ToString() }).ToList();
+                ViewBag.AvailableSkills = db.Skills.ToList();
 
                 return View(student);
             }
@@ -94,9 +94,9 @@ namespace PracticeNewProject.Controllers
             student.SelectedHobbyIds = student.Hobbies.Select(m => m.Id).ToList();
             student.SelectedSkillIds = student.Skills.Select(m => m.Id).ToList();
 
-            ViewBag.AvailableCourses = db.Courses.Select(m => new SelectListItem { Text = m.Name, Value = m.Id.ToString(), Selected = student.CourseId == m.Id }).ToList();
+            ViewBag.AvailableCourses = db.Courses.ToList();
             ViewBag.AvailableHobbies = db.Hobbies.ToList();
-            ViewBag.AvailableSkills = db.Skills.Select(m => new SelectListItem { Text = m.Name, Value = m.Id.ToString(), Selected = student.SelectedSkillIds.Contains(m.Id) }).ToList();
+            ViewBag.AvailableSkills = db.Skills.ToList();
 
             return View(student);
         }
@@ -116,15 +116,16 @@ namespace PracticeNewProject.Controllers
                 student.GenderMale = studentParameter.GenderMale;
                 student.Password = studentParameter.Password;
                 student.UserName = studentParameter.UserName;
-                student.Course = db.Courses.Find(studentParameter.CourseId);
+                student.Course = db.Courses.Find(studentParameter.CourseId.Value);
 
                 if (studentParameter.SelectedHobbyIds == null)
-                    student.Hobbies.Where(m => student.Hobbies.Contains(m)).ToList().ForEach(m => student.Hobbies.Remove(m));
+                    student.Hobbies.ToList().ForEach(m => student.Hobbies.Remove(m));
                 else
                 {
                     // First remove items that are no longer selected
                     student.Hobbies.Where(m => !studentParameter.SelectedHobbyIds.Contains(m.Id))
                         .ToList().ForEach(m => student.Hobbies.Remove(m));
+
                     // Now add newly selected hobbies
                     var existingHobbyIds = student.Hobbies.Select(m => m.Id).ToList();
                     var newHobbyIds = studentParameter.SelectedHobbyIds.Except(existingHobbyIds).ToList();
@@ -133,15 +134,13 @@ namespace PracticeNewProject.Controllers
                 }
 
                 if (studentParameter.SelectedSkillIds == null)
-                    student.Skills.Where(m => student.Skills.Contains(m)).ToList().ForEach(m => student.Skills.Remove(m));
+                    student.Skills.ToList().ForEach(m => student.Skills.Remove(m));
                 else
                 {
                     // First remove items that are no longer selected
-                    if (studentParameter.SelectedSkillIds != null)
-                    {
-                        student.Skills.Where(m => !studentParameter.SelectedSkillIds.Contains(m.Id))
-                            .ToList().ForEach(m => student.Skills.Remove(m));
-                    }
+                    student.Skills.Where(m => !studentParameter.SelectedSkillIds.Contains(m.Id))
+                        .ToList().ForEach(m => student.Skills.Remove(m));
+
                     // Now add newly selected skills
                     var existingSkillsIds = student.Skills.Select(m => m.Id);
                     var newSkillsIds = studentParameter.SelectedSkillIds.Except(existingSkillsIds);
@@ -152,8 +151,13 @@ namespace PracticeNewProject.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            student.SelectedHobbyIds = student.Hobbies.Select(m => m.Id).ToList();
+            student.SelectedSkillIds = student.Skills.Select(m => m.Id).ToList();
 
-            ViewBag.CourseId = new SelectList(db.Courses, "Id", "Name", student.CourseId);
+            ViewBag.AvailableCourses = db.Courses.ToList();
+            ViewBag.AvailableHobbies = db.Hobbies.ToList();
+            ViewBag.AvailableSkills = db.Skills.ToList();
+
             return View(student);
         }
 

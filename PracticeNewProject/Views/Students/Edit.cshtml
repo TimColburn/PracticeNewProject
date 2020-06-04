@@ -52,10 +52,11 @@
         </div>
     </div>
 
+
     <div class="form-group">
         @Html.LabelFor(model => model.CourseId, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.DropDownListFor(m => m.CourseId, new SelectList(ViewBag.AvailableCourses, "Value", "Text"), htmlAttributes: new { @class = "form-control" })
+            @Html.DropDownListFor(m => m.CourseId, new SelectList(ViewBag.AvailableCourses, "Id", "Name"), htmlAttributes: new { @class = "form-control" })
             @Html.ValidationMessageFor(model => model.CourseId, "", new { @class = "text-danger" })
         </div>
     </div>
@@ -72,7 +73,7 @@
     <div class="form-group">
         @Html.LabelFor(m => m.Skills, new { @class = "control-label col-md-2" })
         <div class="col-md-10" style="padding-top: 6px;">
-            @Html.ListBoxFor(m => m.SelectedSkillIds, new MultiSelectList(ViewBag.AvailableSkills, "Value", "Text"), new { style = "width: 100%;" })
+            @Html.ListBoxFor(m => m.SelectedSkillIds, new MultiSelectList(ViewBag.AvailableSkills, "Id", "Name"), new { style = "width: 100%;" })
         </div>
     </div>
     <div class="form-group">
