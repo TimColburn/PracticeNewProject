@@ -1,16 +1,13 @@
 ﻿
+***** PracticeNewProject Project Notes *****
 
+6/4/20  when I had problems with creating *new* database, I did the following...
+          1) make sure the App_Data folder exists
+          2) use the CreateDatabaseIfNotExists<NewProjectContext> base class
+          3) run update-database
+          4) replace the base class to DropCreateDatabaseAlways<NewProjectContext>
 
-
-
-6/4/20 - when I had problems with creating new database, I did the following...
-          // tmc - to create new db if one does not currently exist:
-          //          1) make sure the App_Data folder exists
-          //          2) use the CreateDatabaseIfNotExists<NewProjectContext> base class...
-          //              public class NewProjectDBInitializer : CreateDatabaseIfNotExists<NewProjectContext>
-          //          3) run update-database
-          //          4) replace the base class...
-          //              public class NewProjectDBInitializer : DropCreateDatabaseAlways<NewProjectContext>
-6/4/20 - when I tried starting VS then 'Clone or check out code' from my GitHub repository,
+6/4/20  when I tried starting VS using 'Clone or check out code' from my GitHub repository,
 					I ran into problems with the roslyn compiler.  To fix, run CleanSolution then 
 					RebuildSolution.
+         
