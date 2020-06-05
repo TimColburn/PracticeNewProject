@@ -1,13 +1,43 @@
 ﻿
 ***** PracticeNewProject Project Notes *****
 
-6/4/20  when I had problems with creating *new* database, I did the following...
+6/5/20  Adding Selenium...
+          1) add new class project PracticeNewProject.UITests
+          2) nuget xunit
+          3) nuget xunit.runner.visualstudio
+          4) nuget selenium.webdriver (v3.141.0)
+          5) nuget selenium.webdriver.chromedriver (v83.0.4103)
+          6) add new file AppShould.cs...............................
+              using System;
+              using Xunit;
+              using OpenQA.Selenium;
+              using OpenQA.Selenium.Chrome;
+
+              namespace PracticeNewProject.UITests
+              {
+                  public class AppShould
+                  {
+                      [Fact]
+                      [Trait("Category", "Smoke")]
+                      public void LoadApplicationPage()
+                      {
+                          using (IWebDriver driver = new ChromeDriver())
+                          {
+                              driver.Navigate().GoToUrl("https://localhost:44315/");
+                          }
+                      }
+                  }
+              }
+              .....................................................................
+
+
+6/4/20  New Database Problem.  When I had problems with creating *new* database, I did the following...
           1) make sure the App_Data folder exists
           2) use the CreateDatabaseIfNotExists<NewProjectContext> base class
           3) run update-database
           4) replace the base class to DropCreateDatabaseAlways<NewProjectContext>
 
-6/4/20  when I tried starting VS using 'Clone or check out code' from my GitHub repository,
+6/4/20  Roslyn Compiler Prolem.  When I tried starting VS using 'Clone or check out code' from my GitHub repository,
 					I ran into problems with the roslyn compiler.  To fix, run CleanSolution then 
 					RebuildSolution.
          
