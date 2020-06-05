@@ -1,13 +1,17 @@
 ﻿
 ***** PracticeNewProject Project Notes *****
 
+6/5/20  Running Selenium.  First run the application by 
+          Debug/StartWithoutDebugging and then run the tests
+
 6/5/20  Adding Selenium...
           1) add new class project PracticeNewProject.UITests
           2) nuget xunit
           3) nuget xunit.runner.visualstudio
           4) nuget selenium.webdriver (v3.141.0)
           5) nuget selenium.webdriver.chromedriver (v83.0.4103)
-          6) add new file AppShould.cs...............................
+          6) nuget selenium.support
+          7) add new file AppShould.cs...............................
               using System;
               using Xunit;
               using OpenQA.Selenium;
