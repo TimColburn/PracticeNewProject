@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Data.Entity;
 
-namespace PracticeNewProject.Data
+namespace PracticeNewProject.Data 
 {
     public class NewProjectDBInitializer : DropCreateDatabaseAlways<NewProjectContext>
     {
