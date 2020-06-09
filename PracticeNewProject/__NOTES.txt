@@ -1,6 +1,7 @@
 ﻿
 ***** PracticeNewProject Project Notes *****
 
+
 6/5/20  Running Selenium.  First run the application by 
           Debug/StartWithoutDebugging and then run the tests
 
