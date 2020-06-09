@@ -1,6 +1,9 @@
 ﻿
 ***** PracticeNewProject Project Notes *****
 
+just testing pull request with a mock FeatureA
+
+
 
 6/5/20  Running Selenium.  First run the application by 
           Debug/StartWithoutDebugging and then run the tests
